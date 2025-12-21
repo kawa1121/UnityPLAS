@@ -1,0 +1,87 @@
+<h2 id="statement">3</h2>
+<pre class="prettyprint" id="scoring-res">
+<div class="fl">using UnityEngine;
+
+public class SimpleGravityTransform : MonoBehaviour
+{
+    public float gravity = -9.81f;
+    <span style="color:#999;">// Strength of gravity applied to the object（重力の強さ）</span>
+
+    float verticalSpeed = 0f;
+    <span style="color:#999;">// Current vertical movement speed（現在の上下方向の速度）</span>
+
+    void Update()
+    {
+        verticalSpeed += gravity * Time.deltaTime;
+        <span style="color:#999;">// Uses frame time to update movement smoothly（フレーム間の時間を使って更新）</span>
+
+        transform.position += Vector3.up * verticalSpeed * Time.deltaTime;
+        <span style="color:#999;">//Upward direction vector in Unity（Unityでの上方向ベクトル）</span>
+        <span style="color:#999;">// Changes the object’s world position（ワールド座標を変更）</span>
+
+        if (transform.position.y <= 0f)
+        {
+            <span style="color:#999;">// Checks if the object has reached ground level（地面に到達したかを判定）</span>
+
+            Vector3 pos = transform.position;
+            pos.y = 0f;
+            transform.position = pos;
+
+            verticalSpeed = 0f;
+            <span style="color:#999;">// Stops vertical movement（落下を停止）</span>
+        }
+    }
+}
+
+
+
+Q1. Which keyword represents the upward direction vector in Unity?<input size=2 ans="bbb108c46e00cdafb5b90506f2d0808b1bc9b49dbb25257a44d60bde530bee65" placeholder=1></input>
+（Q1. Unity において上方向のベクトルを表すキーワードはどれですか？）
+
+Q2. Which property is used to multiply movement by the time between frames to avoid frame-rate-dependent motion?<input size=2 ans="0a3e9078897ccb267b2d5666ce28293747e0146b8801370177553908391f4b28" placeholder=2></input>
+（Q2. フレーム依存しない動きをするために、移動量に掛けるフレーム間の時間を表すプロパティはどれですか？）
+
+Q3. Which variable in the script represents the current falling speed?<input size=2 ans="f83648af29b357923baa0846a820c2955bb3e0d8b2ba222223fb0291f58f3ae4" placeholder=3></input>
+（Q3. このスクリプトで現在の落下速度を表している変数はどれですか？）
+
+Q4. Which variable defines the strength of gravity applied to the object?<input size=2 ans="17f7d00e0a055138b1a3c8ba09c3ad5d2eb3875a7f84c531c8d3e98d2411cadf" placeholder=4></input>
+（Q4. オブジェクトに加わる重力の強さを定義している変数はどれですか？）
+
+Q5. Which property is used to get or set the object’s world position?<input size=2 ans="4e7a7c763a7307a016761c7645cd09c9a0d67d5c9429b2f454dfa100b4dc5dff" placeholder=5></input>
+（Q5. オブジェクトのワールド座標の取得・設定に使われるプロパティはどれですか？）
+
+Q6. Which condition checks whether the player has reached the ground level so that the falling process can stop? (Please pay attention to half-width spaces when answering.)<input size=2 ans="862fdc7b65d301edc0b94da24ce237cb4a6b8eb74ee6f0b95ab05ed908397dfd" placeholder=6></input>
+（Q6. プレイヤーが地面に到達し、落下を止めてもよいかどうかを判定する条件はどれですか？ ※ 回答の際は半角スペースに注意してください。）
+
+
+
+</div>
+<div class="fr"><img src="" width="500">
+    <video width="100%" controls>
+  <source src="image/gravity.mp4" type="video/mp4">
+</video>
+<p>
+This script simulates simple gravity using Transform instead of physics.
+The object continuously falls downward, accelerates due to gravity,
+and stops when it reaches the ground level.
+(A Transform is a Unity component that stores a GameObject’s position, rotation, and scale in the scene.
+Every GameObject in Unity has a Transform component by default.
+When you modify the Transform directly, the object moves immediately without using physics calculations.
+This makes Transform useful for simple movements, UI elements, and objects that do not require realistic physics.)
+
+このスクリプトは、Rigidbody を使わずに
+Transform を直接操作して簡単な重力表現を行います。
+オブジェクトは重力によって落下し、地面に到達すると停止します。 
+（Transform は、GameObject の位置（Position）・回転（Rotation）・大きさ（Scale）を管理するUnity の基本コンポーネントです。
+すべての GameObject は必ず Transform を持っています。
+Transform を直接変更すると、物理演算を使わずに 即座にオブジェクトの位置が変化します。
+そのため、簡単な移動や UI、物理挙動が不要なオブジェクトに向いています。）<p>
+</div>
+</pre>
+<h2 id="answer">Answer</h2>
+<a class="btn" href="javascript:newScoring()">Answer</a>
+<script type="text/javascript">
+$(function(){
+ prettyPrint();
+});
+</script>

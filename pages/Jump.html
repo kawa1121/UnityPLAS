@@ -1,0 +1,81 @@
+<h2 id="statement">2</h2>
+<pre class="prettyprint" id="scoring-res">
+<div class="fl">using UnityEngine;
+
+public class PlayerJump : MonoBehaviour
+{
+    public float jumpForce = 5f;
+    private Rigidbody rb;
+    <span style="color:#999;">// Component used for physics-based movement（物理挙動を扱うコンポーネント）</span>
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+         <span style="color:#999;">// Gets a component from the same GameObject（同じ GameObject からコンポーネントを取得）</span>
+    }
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+             <span style="color:#999;">// Detects the moment a button is pressed（ボタンが押された瞬間を検出）</span>
+
+            rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+             <span style="color:#999;">// Applies force to a Rigidbody（Rigidbody に力を加える）</span>
+             <span style="color:#999;">// Applies force instantly like an impact（衝撃のように一瞬で力を加える）</span>
+        }
+    }
+}
+
+
+
+Q1. Which component allows the player to move with realistic physics such as falling and jumping?<input size=2 ans="d86ac657dcb91f1d29f6b169d579dd0d30c99fd612d9ba8f220f0b7f0566fbea" placeholder=1></input>
+（Q1. プレイヤーが落下やジャンプなどの物理的な動きをできるようにするためのコンポーネントはどれですか？）
+
+Q2. Which command is used to get the "Rigidbody" component from the same GameObject?<input size=2 ans="de91a5cb8bf5a21e0d7c2fc76896e3205f346aadd944f20a9ad861d2cbd76ed8" placeholder=2></input>
+（Q2. 同じゲームオブジェクトから Rigidbody コンポーネントを取得するために使う命令はどれですか？）
+
+Q3. Which keyword detects the moment the jump button is pressed?<input size=2 ans="aba88cdcaeacafdc64a94e90b60e1900a57b2349e05e9c7312558d158690eaa4" placeholder=3></input>
+（Q3. ジャンプボタンが押された“瞬間”を検出するために使うキーワードはどれですか？）
+
+Q4. Which method applies a physical force to the "Rigidbody" to make the player move?<input size=2 ans="f388759c77b4e38647eb5d86c84bb701ab71db53ccd9428e6e97989bb5d331b5" placeholder=4></input>
+（Q4. Rigidbody に力を加えてプレイヤーを動かすために使うメソッドはどれですか？）
+
+Q5. Which keyword represents the upward vector when jumping?<input size=2 ans="f3f938f3cf14b3ae0ee35d6f2ab4e3df201485428f2a8a8b4dfff21f18dd5ae8" placeholder=5></input>
+（Q5. ジャンプするときの上方向のベクトルを表すキーワードはどれですか？）
+
+Q6. Which setting applies the force instantly like an impact when added to the "Rigidbody"?<input size=2 ans="c9cd8bc7d424e4c92c015a367d9eba464c383191b9b5a4eee05dffc2d876fd0a" placeholder=6></input>
+（Q6. Rigidbody に力を加える際に，衝撃のように一瞬で作用させる設定はどれですか？）
+
+
+
+</div>
+<div class="fr"><img src="" width="500">
+     <video width="100%" controls>
+  <source src="image/Jump.mp4" type="video/mp4">
+</video>
+<p>
+This script allows the player to jump using physics.
+When the jump button is pressed, an upward force is applied to the Rigidbody,
+causing the GameObject to jump realistically with gravity.
+
+(A Rigidbody is a Unity component that allows a GameObject to be affected by the physics engine.
+It enables realistic movement such as gravity, falling, jumping, and collisions.
+When a Rigidbody is attached, Unity automatically calculates forces, acceleration, and interactions with other objects.
+Developers can move a Rigidbody by applying forces instead of directly changing its position.)
+
+このスクリプトは、物理演算を使ってプレイヤーをジャンプさせます。
+スペースなどのジャンプボタンを押すと、Rigidbody に上方向の力が加えられ、
+重力の影響を受けた自然なジャンプ動作が実現されます。    
+（Rigidbodyは、GameObject を Unity の物理エンジンの影響下に置くためのコンポーネントです。
+重力、落下、ジャンプ、衝突などの現実的な物理挙動を自動的に計算してくれます。
+Rigidbody を使う場合は、位置を直接変更するのではなく、力（Force）を加えることでオブジェクトを動かすのが基本です。）<p>
+</div>
+</pre>
+<h2 id="answer">Answer</h2>
+<a class="btn" href="javascript:newScoring()">Answer</a>
+<script type="text/javascript">
+$(function(){
+ prettyPrint();
+});
+</script>

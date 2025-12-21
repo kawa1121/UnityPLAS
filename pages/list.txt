@@ -1,0 +1,69 @@
+﻿<h2 id="list">Problems</h2>
+
+<table class="table table-striped table-bordered table-hover">
+
+<tr><th>Problem No</th><th>ProblemName</th><th>Remark</th></tr>
+
+<tr onclick="location.href='index.html?pages/PlayerMovement.html'">
+<td width="20%">1</td>
+<td width="50%">PleyerMovement（プレイヤー移動）</td>
+<td id="p0117" width="30%"></td></tr>
+
+<tr onclick="location.href='index.html?pages/Jump.html'">
+<td width="20%">2</td>
+<td width="50%">Jump mechanics（ジャンプ処理）</td>
+<td id="p0117" width="30%"></td></tr>
+
+<tr onclick="location.href='index.html?pages/Gravity.html'">
+<td width="20%">3</td>
+<td width="50%">Gravity handling（重力処理）</td>
+<td id="p0117" width="30%"></td></tr>
+
+<tr onclick="location.href='index.html?pages/Friction.html'">
+<td width="20%">4</td>
+<td width="50%">Friction and velocity damping（摩擦処理、速度の減衰）</td>
+<td id="p0117" width="30%"></td></tr>
+
+<tr onclick="location.href='index.html?pages/Launching.html'">
+<td width="20%">5</td>
+<td width="50%">Launching objects（弾の発射）</td>
+<td id="p0117" width="30%"></td></tr>
+
+<tr onclick="location.href='index.html?pages/Collision_detection.html'">
+<td width="20%">6</td>
+<td width="50%">Collision detection（当たり判定）</td>
+<td id="p0117" width="30%"></td></tr>
+
+<tr onclick="location.href='index.html?pages/Collision_reactions.html'">
+<td width="20%">7</td>
+<td width="50%">Object collision reactions（物体衝突時の処理）</td>
+<td id="p0117" width="30%"></td></tr>
+
+<tr onclick="location.href='index.html?pages/Damage.html'">
+<td width="20%">8</td>
+<td width="50%">Damage handling（ダメージ処理）</td>
+<td id="p0117" width="30%"></td></tr>
+
+<tr onclick="location.href='index.html?pages/Camera_follow.html'">
+<td width="20%">9</td>
+<td width="50%">Camera follow（カメラの追従処理）</td>
+<td id="p0117" width="30%"></td></tr>
+
+<tr onclick="location.href='index.html?pages/Camera_rotation.html'">
+<td width="20%">10</td>
+<td width="50%">Camera rotation（カメラの回転処理）</td>
+<td id="p0117" width="30%"></td></tr>
+
+
+
+</table>
+
+<h2 id="submission">Submission</h2>
+<code>1</code>
+<div id="user"><input class="form-control" type="text"  placeholder="Student ID"></div>
+<code>2</code>
+</br><a class="btn" onclick="expression()">Show Record</a>
+<textarea readonly onclick="this.focus();this.select()" class="form-control" id="show_result" value="b" placeholder="Your Record"></textarea>
+<code>3</code>
+</br><a class="btn btn-success" onclick="TextSave()">Save</a>
+<a id='DL_link'></a>

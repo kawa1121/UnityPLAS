@@ -1,0 +1,74 @@
+<h2 id="statement">4</h2>
+<pre class="prettyprint" id="scoring-res">
+<div class="fl">using UnityEngine;
+
+public class PlayerFriction : MonoBehaviour
+{
+    public float friction = 5f;
+   <span style="color:#999;">// Controls how quickly movement slows down（減速の速さを制御）</span>
+    private Vector3 velocity;
+    <span style="color: #999;">// Stores current movement speed and direction（現在の移動速度と方向）</span>
+    void Update()
+    {
+        float h = Input.GetAxis("Horizontal");
+        float v = Input.GetAxis("Vertical");
+        Vector3 input = new Vector3(h, 0, v);
+
+        velocity += input;
+        <span style="color: #999;">// Accumulates movement over time（移動量を蓄積）</span> 
+        if (velocity.magnitude > 0f)
+        <span style="color: #999;">// Checks the length of the velocity vector（速度ベクトルの大きさを確認）</span> 
+        {
+            velocity = Vector3.Lerp(velocity, Vector3.zero, friction * Time.deltaTime);
+        <span style="color: #999;">// Gradually moves a value toward zero（値を徐々に0へ近づける）</span>    
+        <span style="color: #999;">// Uses frame time for smooth change（フレーム間時間を使用）</span>
+        }
+
+        transform.Translate(velocity * Time.deltaTime, Space.World);
+        <span style="color: #999;">// Moves the object using current velocity（現在の速度を使って移動）</span>
+    }
+}
+
+
+
+Q1. Which variable controls how quickly the player slows down due to friction?<input size=2 ans="a591d87237101d38b45983c514caab51906743de94461189da3d76f1baf1f186" placeholder=1></input>
+（Q1. 摩擦によってプレイヤーがどれくらい早く減速するかを制御する変数はどれですか？）
+
+Q2. Which variable stores the current movement speed of the player?<input size=2 ans="95227375000b7fb2913e0fb24ae24d8008e7a5a6ec27afb9d6b3b2bb37c33610" placeholder=2></input>
+（Q2. プレイヤーの現在の移動速度を保持している変数はどれですか？）
+
+Q3. Which method gradually changes the velocity toward zero to simulate friction?<input size=2 ans="5470078e5f384690d59bf4fad02eb64db99217f9e89fb10a9fb307f825b54556" placeholder=3></input>
+（Q3. 摩擦を再現するために、速度を徐々に0へ近づけるために使用しているメソッドはどれですか？）
+
+Q4. Which property returns the length (size) of the velocity vector?<input size=2 ans="03c3a94c140bb4e8fdf74bfa441117763d5adff48660b9ec2efe143ebdea4bff" placeholder=4></input>
+（Q4. velocityベクトルの大きさ（長さ）を返すプロパティはどれですか？）
+
+Q5. Which Time property is used to make the friction calculation frame-rate independent?<input size=2 ans="b2e2c2284e8c26a4eda4a44330b989dcc1d3f5fd85fa270e540ceda64fb98128" placeholder=5></input>
+（Q5. フレームレートに依存しない摩擦計算にするために使われている Time のプロパティはどれですか？）
+
+Q6. Which method moves the player based on the current movement speed value (the answer of Q2)?<input size=2 ans="a21a4e432e3c0c9848c00ccebe67f17a3716bdfa360498246964c4a770ef41ea" placeholder=6></input>
+（Q6. プレイヤーの現在の移動速度の値（Q2の答え）に基づいてプレイヤーを移動させているメソッドはどれですか？）
+
+
+
+</div>
+<div class="fr"><img src="" width="500">
+     <video width="100%" controls>
+  <source src="image/friction.mp4" type="video/mp4">
+</video>
+<p>
+This script simulates friction by gradually reducing the player’s movement speed.
+When input stops, the velocity smoothly decreases toward zero instead of stopping immediately,
+creating a sliding or inertia-like movement effect.
+
+このスクリプトは、摩擦や慣性のある移動を再現します。
+移動入力をやめてもすぐに止まらず、徐々に減速して自然に止まるような動きになります。<p>
+</div>
+</pre>
+<h2 id="answer">Answer</h2>
+<a class="btn" href="javascript:newScoring()">Answer</a>
+<script type="text/javascript">
+$(function(){
+ prettyPrint();
+});
+</script>

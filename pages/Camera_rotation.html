@@ -1,0 +1,65 @@
+<h2 id="statement">10</h2>
+<pre class="prettyprint" id="scoring-res">
+<div class="fl">using UnityEngine;
+
+public class CameraRotation : MonoBehaviour
+{
+    public float sensitivity = 200f;
+    private float xRotation = 0f;
+
+    void Update()
+    {
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -70f, 70f);
+
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        transform.parent.Rotate(Vector3.up * mouseX);
+    }
+}
+
+Q1. Which variable changes how sensitive the camera rotation is to mouse movement?<input size=2 ans="5cf18dfc6bbfd4a29ec6c4eabc44b8a55e84fc3f2c02888d66db9cdd18084988" placeholder=1></input>
+（Q1. マウスの動きがどれくらいカメラの回転に反映されるか（感度）を決めている変数はどれですか？）
+
+Q2. Which variable keeps track of the camera’s current up-and-down rotation angle?<input size=2 ans="ae08d7a900c94b1cc3f3b0a08da29112902df4dd5a43a17d790b3e614185e118" placeholder=2></input>
+（Q2. カメラの上下の回転角の現在の値を記録している変数はどれですか？）
+
+Q3. Which Input function reads the mouse movement left and right?<input size=2 ans="d94a462b65c0e90edd0c65991a9a529f0f439de2e3ee60e9b1cb2788d0f738d8" placeholder=3></input>
+（Q3. マウスの左右の動きを読み取るために使っている入力関数はどれですか？）
+
+Q4. Which Input function reads the mouse movement up and down?<input size=2 ans="f608396fadfe8c0b214e5c4ab4adac16fd6d3d443bbf231dd1f0a1be936628cd" placeholder=4></input>
+（Q4. マウスの上下の動きを読み取るために使っている入力関数はどれですか？）
+
+Q5. Which Mathf function prevents the vertical rotation from going too far?<input size=2 ans="90efb6658806625c6b5ea0eca1af5fcbcdc592e90e393918018c07f7f96427ec" placeholder=5></input>
+（Q5. 上下の回転角が行きすぎてしまわないように制限するために使っている Mathf 関数はどれですか？）
+
+Q6. Which line of code applies the calculated vertical angle to the camera so its orientation actually changes?<input size=2 ans="2b9f2abf8cebb37a6786f8a36a3bd560e549eacc9ba9ba8aa1c222dcd85d7a02" placeholder=6></input>
+（Q6. 計算された上下方向の回転角を使って、実際にカメラの回転を更新しているコードはどれですか？）
+
+
+</div>
+<div class="fr"><img src="" width="500">
+     <video width="100%" controls>
+  <source src="image/CameraRotation.mp4" type="video/mp4">
+</video>
+<p>
+This script allows the camera to rotate smoothly based on mouse movement.
+Vertical rotation is applied to the camera itself and limited to prevent over-rotation.
+Horizontal rotation is applied to the parent object, allowing natural first-person camera control.
+The initial camera angle is read in Start() to prevent sudden snapping when the game begins.
+
+このスクリプトは、マウス操作によってカメラを自然に回転させる処理を行います。
+上下の回転はカメラに適用され、角度制限によって過度に視点が動かないようにしています。
+左右の回転は親オブジェクトに適用することで、一人称視点らしい動きを実現しています。
+ゲーム開始時に現在の角度を取得することで、急な角度変化を防いでいます。<p>
+</div>
+</pre>
+<h2 id="answer">Answer</h2>
+<a class="btn" href="javascript:newScoring()">Answer</a>
+<script type="text/javascript">
+$(function(){
+ prettyPrint();
+});
+</script>

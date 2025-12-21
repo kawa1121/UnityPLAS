@@ -1,0 +1,69 @@
+<h2 id="statement">6</h2>
+<pre class="prettyprint" id="scoring-res">
+<div class="fl">using UnityEngine;
+
+public class CollisionChecker : MonoBehaviour
+{
+    void OnCollisionEnter(Collision collision)
+    {
+        <span style="color:#999;">// Called automatically when a collision occurs（衝突が発生したとき自動的に呼ばれる）</span>
+
+        Debug.Log("Hit: " + collision.gameObject.name);
+        <span style="color:#999;">// Prints information to the Unity Console（Unityのコンソールに出力）</span>
+        <span style="color:#999;">// Accesses the collided object’s name（衝突相手の名前にアクセス）</span>
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            <span style="color:#999;">// Checks the tag of the collided object（衝突相手のタグを確認）</span>
+
+            Debug.Log("Hit Player!");
+            <span style="color:#999;">// Outputs a message when the condition is true（条件成立時にメッセージを出力）</span>
+        }
+    }
+}
+
+
+
+Q1. When an object collides with another object, which method is automatically called in this script?<input size=2 ans="4c4b6af102d1ecacaa8ac6033124098133beede05e21da7a930034c43ec0ecbd" placeholder=1></input>
+（Q1. オブジェクトが別のオブジェクトに衝突したとき，自動的に呼び出されるメソッドはどれですか？）
+
+Q2. Which class type is used as the parameter of the collision method?<input size=2 ans="a5d34b8467ec09fe964530bb46c38c52ee5b47a96c81e041937ff31bf5c45c57" placeholder=2></input>
+（Q2. 衝突メソッドの引数として使われているクラスの型はどれですか？）
+
+Q3. Which object reference allows you to access the collided object's name?<input size=2 ans="3551861b361ca91192d2c311619e18a3cee7308014b3f625a7599e01acc6da53" placeholder=3></input>
+（Q3. 衝突した相手オブジェクトの名前にアクセスする際に使う参照はどれですか？）
+
+Q4. Which property returns the GameObject of the collided object?<input size=2 ans="585eb1b5ab6d92272231b5227b527f639b5bfa559d1d791b30281fb0065760bc" placeholder=4></input>
+（Q4. 衝突相手の GameObject を返すプロパティはどれですか？）
+
+Q5. Which method is used to check whether the collided object has the tag "Player"?<input size=2 ans="5e9b3567200e7274c76768c69a8c7ada255dd0b898bd593f2ca485bdc853930f" placeholder=5></input>
+（Q5. 衝突したオブジェクトが "Player" タグを持っているかを調べるために使うメソッドはどれですか？）
+
+Q6. Which method is used to print messages to the console when a collision happens?<input size=2 ans="15a9ebe2257c69e6f1cf97969b32f7c92940f5d89ab2005668b9692e9876e30d" placeholder=6></input>
+（Q6. 衝突発生時にコンソールへメッセージを出力するために使用されているメソッドはどれですか？）
+
+
+
+</div>
+<div class="fr">
+    <video width="100%" controls>
+  <source src="image/Collision_detection.mp4" type="video/mp4">
+</video>
+    <img src="image/Hit.png" width="500">
+    <p>
+This script detects collisions between objects.
+When a collision occurs, it prints the name of the collided object to the console.
+If the collided object has the tag "Player", an additional message is displayed.
+
+このスクリプトは、オブジェクト同士の衝突を検出します。
+衝突が発生すると、相手オブジェクトの名前をコンソールに表示し、
+相手が「Player」タグを持っている場合は、追加のメッセージを出力します。<p>
+</div>
+</pre>
+<h2 id="answer">Answer</h2>
+<a class="btn" href="javascript:newScoring()">Answer</a>
+<script type="text/javascript">
+$(function(){
+ prettyPrint();
+});
+</script>

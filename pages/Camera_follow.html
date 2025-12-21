@@ -1,0 +1,77 @@
+<h2 id="statement">9</h2>
+<pre class="prettyprint" id="scoring-res">
+<div class="fl">using UnityEngine;
+
+using UnityEngine;
+
+public class CameraFollow : MonoBehaviour
+{
+    public Transform target;
+    <span style="color:#999;">// Target object to follow（カメラが追いかける対象）</span>
+
+    public Vector3 offset = new Vector3(0, 5, -8);
+    <span style="color:#999;">// Offset distance from the target（ターゲットとの距離）</span>
+
+    public float smoothSpeed = 10f;
+    <span style="color:#999;">// Controls smooth movement speed（動きの滑らかさを調整）</span>
+
+    void LateUpdate()
+    {
+        <span style="color:#999;">// Runs after Update for stable camera motion（安定したカメラ動作のため）</span>
+
+        Vector3 desiredPosition = target.position + offset;
+        <span style="color:#999;">// Calculates desired camera position（目標カメラ位置を計算）</span>
+
+        Vector3 smoothedPosition =
+            Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+        <span style="color:#999;">// Smoothly moves toward the target position（目標位置へ滑らかに移動）</span>
+
+        transform.position = smoothedPosition;
+        <span style="color:#999;">// Applies the new camera position（計算結果を反映）</span>
+    }
+}
+
+
+
+Q1. Which variable stores the object that the camera should follow?<input size=2 ans="6602efb09d25f276bbb54084e89d2f3aa699efdb566789df2703b1d89563ebfe" placeholder=1></input>
+（Q1. カメラが追いかける対象のオブジェクトを保存している変数はどれですか？）
+
+Q2. Which value decides how far the camera stays away from the target?<input size=2 ans="04125acd5fbaab7e33cb952e6d1d013beea2b863cbc14e068e08c537e004c90e" placeholder=2></input>
+（Q2. カメラがターゲットからどれくらい離れて表示されるかを決めている値はどれですか？）
+
+Q3. Which variable controls how smoothly the camera moves when following the target?<input size=2 ans="884b3e8e83ab348650a63f8d761f93070247104963b69e5a38bf33469159e65f" placeholder=3></input>
+（Q3. カメラがターゲットを追うとき、どれくらい滑らかに動くかを調整している変数はどれですか？）
+
+Q4. Which method is used to smoothly move between the current position and the target position?<input size=2 ans="af044af1f0b1d4f910f7a42dc11aea36539a0a1cc261d3c016d036e5d23f3ce3" placeholder=4></input>
+（Q4. 現在の位置と目標位置の間を滑らかに移動させるために使っているメソッドはどれですか？）
+
+Q5. Which property makes the motion smooth even if the frame rate changes?<input size=2 ans="15567fef6257fbb01fff2de4ece90b38a9da02f3cdb0a339d320a5568746f029" placeholder=5></input>
+（Q5. フレームレートが変わっても滑らかさが保たれるようにするために使っている Time のプロパティはどれですか？）
+
+Q6. Which property of the camera is finally updated to apply the smoothed position?<input size=2 ans="590b04aef35953e28b5faa959b4747693c9627fcb6e8c8f3a3123f3f843dc07c" placeholder=6></input>
+（Q6. 計算された滑らかな位置を、最終的にカメラに反映するために更新しているプロパティはどれですか？）
+
+
+</div>
+<div class="fr"><img src="" width="500">
+     <video width="100%" controls>
+  <source src="image/CameraFollow.mp4" type="video/mp4">
+</video>
+<p>
+This script makes the camera smoothly follow a target object, such as the player.
+The camera keeps a fixed distance from the target using an offset and smoothly moves toward the desired position using linear interpolation.
+LateUpdate() is used so the camera movement happens after the target has finished moving, resulting in more stable and natural camera behavior.
+
+このスクリプトは、カメラがプレイヤーなどの対象オブジェクトを滑らかに追従する処理を行います。
+ターゲットの位置に offset を加えることで一定の距離を保ち、
+Vector3.Lerp を使って現在位置から目標位置へ少しずつ移動させています。
+LateUpdate() を使うことで、ターゲットの移動後にカメラが更新され、より安定したカメラ挙動になります。<p>
+</div>
+</pre>
+<h2 id="answer">Answer</h2>
+<a class="btn" href="javascript:newScoring()">Answer</a>
+<script type="text/javascript">
+$(function(){
+ prettyPrint();
+});
+</script>

@@ -1,0 +1,82 @@
+<h2 id="statement">5</h2>
+<pre class="prettyprint" id="scoring-res">
+<div class="fl">using UnityEngine;
+
+public class Shooting : MonoBehaviour
+{
+    public GameObject bulletPrefab;
+    <span style="color:#999;">// Basic unit of objects in a scene（シーン内オブジェクトの基本単位）</span>
+
+    public Transform firePoint;
+    <span style="color:#999;">// Transform used as a launch position（発射位置として使われる Transform）</span>
+
+    public float bulletSpeed = 10f;
+    <span style="color:#999;">// Controls how fast the bullet moves（弾の速さを制御）</span>
+
+    void Update()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            <span style="color:#999;">// Detects the moment the fire button is pressed（発射ボタンが押された瞬間を検出）</span>
+
+            GameObject bullet = Instantiate(
+                bulletPrefab,
+                firePoint.position,
+                firePoint.rotation
+            );
+            <span style="color:#999;">// Creates a new object in the scene（新しいオブジェクトを生成）</span>
+            <span style="color:#999;">// Uses Transform position information（Transform の位置情報を使用）</span>
+
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            <span style="color:#999;">// Gets a physics component from the object（物理コンポーネントを取得）</span>
+
+            rb.velocity = firePoint.forward * bulletSpeed;
+            <span style="color:#999;">// Forward direction vector of the object（オブジェクトの正面方向ベクトル）</span>
+            <span style="color:#999;">// Directly sets movement speed and direction（移動速度と方向を直接設定）</span>
+        }
+    }
+}
+
+
+
+Q1.Which keyword represents the fundamental unit of all objects within a scene?<input size=2 ans="fe69a53de91264295491018d3f68a4e8396aa96b512e79a5939b5f85e15edd75" placeholder=1></input>
+（Q1.シーン内のすべてのオブジェクトの基本単位を表すキーワードはどれですか？）
+
+Q2.Which Unity function creates a new object?<input size=2 ans="1e0b8ab2bfb90ecf2a971e7d099e664317018a22724a57a39a88c0cfe665f1c2" placeholder=2></input>
+（Q2.新しいオブジェクトを生成するUnityの関数はどれですか？）
+
+Q3.What keyword represents the location of the launch point (Transform position information)?<input size=2 ans="1d917108d7a6598fac877225f435c0f57ad62ea1ae19e2c82b26fa3f23a21f32" placeholder=3></input>
+（Q3.発射地点の位置（Transformの位置情報）を表すキーワードは？）
+
+Q4.Which keyword represents the vector in the object's forward direction (Z-axis)?<input size=2 ans="58cfb183f089f1bb8ec9c23e37a01e3438a0b90eab179b7deda5bd3948c420ff" placeholder=4></input>
+（Q4.オブジェクトの正面方向（Z軸）のベクトルを表すキーワードはどれですか？）
+
+Q5.Which variable directly sets the object's movement speed (direction and speed)?<input size=2 ans="f42643a015ef24683a209e41eed4a8b6b00535dcb73a19539ed722771193c0f0" placeholder=5></input>
+（Q5.オブジェクトの移動速度（方向と速さ）を直接設定する変数はどれですか？）
+
+Q6.Which keyword detects the moment the fire button is pressed, such as a left mouse click?<input size=2 ans="fc21919b9da614ca622faa42c902a494321a376616bc9dee54d6ed82cb1edf9d" placeholder=6></input>
+（Q6.マウス左クリックなど、発射ボタンが押された瞬間を検出するキーワードはどれですか？）
+
+
+
+</div>
+<div class="fr"><img src="" width="500">
+    <video width="100%" controls>
+  <source src="image/Launching.mp4" type="video/mp4">
+</video>
+<p>
+This script allows the player to shoot bullets.
+When the fire button is pressed, a bullet is created at the fire 
+point and moves forward at a fixed speed using physics.
+
+このスクリプトは、プレイヤーが弾を発射する処理を実装します。
+発射ボタンを押すと、指定した位置に弾が生成され、正面方向へ一定速度で飛んでいきます。    <p>
+</div>
+</pre>
+<h2 id="answer">Answer</h2>
+<a class="btn" href="javascript:newScoring()">Answer</a>
+<script type="text/javascript">
+$(function(){
+ prettyPrint();
+});
+</script>

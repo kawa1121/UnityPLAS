@@ -1,0 +1,136 @@
+<h2 id="statement">8</h2>
+<pre class="prettyprint" id="scoring-res">
+<div class="fl">using UnityEngine;
+using System.Collections;
+
+public class Enemy : MonoBehaviour
+{
+    public int health = 100;
+    <span style="color:#999;">// Stores the enemy's current HP（敵の現在の体力を保持）</span>
+
+    public Color damageColor = Color.red;
+    <span style="color:#999;">// Color shown when taking damage（ダメージを受けたときの色）</span>
+
+    public float flashTime = 0.1f;
+    <span style="color:#999;">// Duration of the damage effect（ダメージ演出の時間）</span>
+
+    private Renderer rend;
+    <span style="color:#999;">// Component used to control appearance（見た目を操作するコンポーネント）</span>
+
+    private Color originalColor;
+    <span style="color:#999;">// Saves the original color（元の色を保存）</span>
+
+    void Start()
+    {
+        rend = GetComponent<Renderer>();
+        <span style="color:#999;">// Gets a component attached to this object（同じオブジェクトから取得）</span>
+
+        originalColor = rend.material.color;
+        <span style="color:#999;">// Stores the starting color（初期の色を記録）</span>
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        <span style="color:#999;">// Called automatically when a collision happens（衝突時に自動で呼ばれる）</span>
+
+        if (collision.gameObject.CompareTag("Bullet"))
+        {
+            <span style="color:#999;">// Checks the tag of the collided object（衝突相手のタグを確認）</span>
+
+            Destroy(collision.gameObject);
+            <span style="color:#999;">// Removes the collided object from the scene（衝突したオブジェクトを削除）</span>
+
+            health -= 20;
+            <span style="color:#999;">// Decreases the HP value（体力を減らす）</span>
+
+            Debug.Log("Enemy HP: " + health);
+            <span style="color:#999;">// Outputs current HP to the console（現在の体力を表示）</span>
+
+            StartCoroutine(DamageFlash());
+            <span style="color:#999;">// Starts a damage effect over time（時間を使った演出を開始）</span>
+
+            if (health <= 0)
+            {
+                <span style="color:#999;">// Checks if the enemy should be destroyed（敵が倒されたか判定）</span>
+
+                Destroy(gameObject);
+                <span style="color:#999;">// Removes this enemy from the scene（敵自身を削除）</span>
+            }
+        }
+    }
+
+    IEnumerator DamageFlash()
+    {
+        rend.material.color = damageColor;
+        <span style="color:#999;">// Changes color to show damage（ダメージ色に変更）</span>
+
+        yield return new WaitForSeconds(flashTime);
+        <span style="color:#999;">// Waits for a short time（一定時間待つ）</span>
+
+        rend.material.color = originalColor;
+        <span style="color:#999;">// Restores the original color（元の色に戻す）</span>
+    }
+}
+
+
+
+Q1. Which variable stores the enemy's current amount of health?<input size=2 ans="c12209d0e8545c5c15c1f37cb2a3b237ad0fb25af217aa5e69031ed92d784167" placeholder=1></input>
+（Q1. 敵が今どれだけ体力が残っているかを保存している変数はどれですか？）
+
+Q2. Which method is used in Start() to get the Renderer component from the enemy object?<input size=2 ans="5d4cd3539db33716205d4ae25331c04193d49f36fd229dcc04e67271f028fca4" placeholder=2></input>
+（Q2. Start() の中で、敵オブジェクトから Renderer コンポーネントを取得するために使われているメソッドはどれですか？）
+
+Q3. Which method is called automatically when the object collides with another object?<input size=2 ans="7b28f5e9c284025256d1891a5f2b9ffc79815077251ee71e1cc3cbc501351fb3" placeholder=3></input>
+（Q3. オブジェクトがほかの物体にぶつかったときに自動的に呼ばれるメソッドはどれですか？）
+
+Q4. Which method is used to check whether the collided object has the "Bullet" tag?<input size=2 ans="4cc85881161343edb992c81333114814b53554fa61d24485de617afacd124ffd" placeholder=4></input>
+（Q4. 衝突した相手が「Bullet」タグを持っているかどうかをチェックしているメソッドはどれですか？）
+
+Q5. Which object is destroyed immediately when the enemy is hit by a bullet?<input size=2 ans="1e0f9d8f0e992798a6e20b24916a5bb3d860a3944a3d4812c53b1d2b8450c05f" placeholder=5></input>
+（Q5. 敵が弾に当たったとき、すぐに削除されているオブジェクトはどれですか？）
+
+Q6. Which operator is used to decrease the health value by 20?<input size=2 ans="375bf16e92a66772180edb23191bbe16216e94626966ac4a25dd6342778e3879" placeholder=6></input>
+（Q6. 体力を20だけ減らすために使われている演算子はどれですか？）
+
+Q7. Which method is used to start the damage flashing effect?<input size=2 ans="9c5ee0bf0f0b0e7a94f727fad19d6077e2d46290119128331b8d3836c92e3803" placeholder=7></input>
+（Q7. ダメージを受けたときの点滅演出を開始するために使われているメソッドはどれですか？）
+
+Q8. Which method removes the enemy object from the scene when health reaches 0 or below?<input size=2 ans="355353e45a1e2d77e14347b7078b6a842da3065593a314fe90619af7434673c8" placeholder=8></input>
+（Q8. 体力が0以下になったときに敵オブジェクトをシーンから消すメソッドはどれですか？）
+
+
+</div>
+<div class="fr"><img src="" width="500">
+     <video width="100%" controls>
+  <source src="image/Damage.mp4" type="video/mp4">
+</video>
+<p>
+This script handles the enemy’s damage processing when it collides with a bullet.
+When the enemy collides with an object tagged as "Bullet", the bullet is destroyed and the enemy’s health is reduced by a fixed amount. The current health value is printed to the console for debugging purposes.
+At the same time, a visual damage effect is played. The enemy temporarily changes its color to indicate that it has been hit, then returns to its original color after a short delay using a coroutine.
+If the enemy’s health reaches zero or below, the enemy GameObject is destroyed and removed from the scene.
+This script combines collision detection, health management, visual feedback, and object destruction to implement a basic enemy damage system.
+
+(The Renderer component is responsible for drawing an object on the screen.
+It controls how the object looks, such as its color, material, and texture.
+By changing the material’s color through the Renderer, you can create visual effects like damage flashes or color changes when the object is hit.)
+
+このスクリプトは、敵キャラクターが弾に当たったときのダメージ処理を行います。
+敵が "Bullet" タグを持つオブジェクトと衝突すると、その弾は削除され、敵の体力が一定量減少します。また、現在の体力はデバッグ用としてコンソールに表示されます。
+同時に、ダメージを受けたことを分かりやすくするための視覚的な演出が行われます。敵の色が一時的に変化し、短い時間が経過した後に元の色へ戻ります。この処理はコルーチン(処理を一気に実行せず、時間をかけて実行するための仕組み)を使って実装されています。
+体力が0以下になると、敵オブジェクトは破壊され、シーンから完全に削除されます。
+このスクリプトは、衝突判定・体力管理・ダメージ演出・オブジェクト削除を組み合わせた、基本的な敵のダメージ処理の例です。
+
+(Renderer は、オブジェクトを画面上に表示するためのコンポーネントです。
+色・マテリアル・テクスチャといった、表示される見た目に関する情報を管理しています。
+Renderer を通してマテリアルの色を変更することで、ダメージを受けたときのフラッシュ演出などを実装できます。)
+<p>
+</div>
+</pre>
+<h2 id="answer">Answer</h2>
+<a class="btn" href="javascript:newScoring()">Answer</a>
+<script type="text/javascript">
+$(function(){
+ prettyPrint();
+});
+</script>

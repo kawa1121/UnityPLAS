@@ -1,0 +1,117 @@
+<h2 id="statement">7</h2>
+<pre class="prettyprint" id="scoring-res">
+<div class="fl">using UnityEngine;
+
+public class BounceOnCollision : MonoBehaviour
+{
+    public float bounceUpForce = 6f;
+    <span style="color:#999;">// Initial upward bounce strength（最初の跳ね上がる強さ）</span>
+
+    public float damping = 0.7f;
+    <span style="color:#999;">// Reduces bounce strength after each collision（衝突ごとに跳ね返りを弱くする）</span>
+
+    public float stopThreshold = 0.3f;
+    <span style="color:#999;">// Threshold to stop bouncing completely（完全停止するためのしきい値）</span>
+
+    private Rigidbody rb;
+    <span style="color:#999;">// Physics component used for movement（物理挙動を扱うコンポーネント）</span>
+
+    private float currentBounceForce;
+    <span style="color:#999;">// Current bounce strength that changes over time（時間とともに変化する現在の跳ね返り力）</span>
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        <span style="color:#999;">// Gets a physics component from the same object（同じオブジェクトから取得）</span>
+
+        currentBounceForce = bounceUpForce;
+        <span style="color:#999;">// Initializes the current bounce force（現在の跳ね返り力を初期化）</span>
+
+        rb.velocity = new Vector3(4f, 0f, 0f);
+        <span style="color:#999;">// Sets an initial horizontal velocity（初期の横方向速度を設定）</span>
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        <span style="color:#999;">// Called automatically when a collision occurs（衝突時に自動で呼ばれる）</span>
+
+        Vector3 velocity = rb.velocity;
+        <span style="color:#999;">// Stores the current velocity（現在の速度を保持）</span>
+
+        float horizontalSpeedX = velocity.x;
+        float horizontalSpeedZ = velocity.z;
+        <span style="color:#999;">// Preserves horizontal movement（横方向の動きを保持）</span>
+
+        if (currentBounceForce < stopThreshold)
+        {
+            <span style="color:#999;">// Checks if bouncing should stop（跳ね返りを止めるか判定）</span>
+
+            rb.velocity = Vector3.zero;
+            rb.isKinematic = true;
+            <span style="color:#999;">// Stops physics-based movement（物理挙動を停止させる)</span>
+            return;
+        }
+
+        velocity.x = horizontalSpeedX;
+        velocity.z = horizontalSpeedZ;
+        velocity.y = currentBounceForce;
+        <span style="color:#999;">// Applies upward velocity only（縦方向のみ跳ね返りを与える）</span>
+
+        rb.velocity = velocity;
+        <span style="color:#999;">// Overwrites the Rigidbody velocity（速度を直接設定）</span>
+
+        currentBounceForce *= damping;
+        <span style="color:#999;">// Weakens the next bounce（次のバウンドを弱くする）</span>
+    }
+}
+
+
+
+Q1.Which Unity component must be attached to the object to enable physics-based movement such as bouncing?<input size=2 ans="af993123c13ae7c4c131d0650c88b5580407462d9b1f229780745abd1942dfb2" placeholder=1></input>
+（Q1物理演算による跳ね返り動作を行うために、オブジェクトに必要な Unity コンポーネントはどれですか？）
+
+Q2.Which variable stores the bounce force that is initially set in Start()?<input size=2 ans="84e51994fc7a9816751fa8fef8a0782599cffdfb635924f448bb68c0fd24e3ab" placeholder=2></input>
+（Q2.Start() で初期値が設定されている、跳ね返りの強さを保持する変数はどれですか？）
+
+Q3.Which Unity method is used inside Start() to get another component from the same GameObject?<input size=2 ans="3cb3974aec28c3bc2cadc6b7b34e12cb4a19938f0a0dbce13fba2b918fcdf4e0" placeholder=3></input>
+（Q3.Start() の中で、同じ GameObject から別のコンポーネントを取得するために使われているメソッドはどれですか？）
+
+Q4.Which Rigidbody member is used to read and overwrite the object's current movement speed?<input size=2 ans="02fa3b739a0f1b04e4ee14d00c68587c3e7972f8010e4016a2673a0cd6c1279f" placeholder=4></input>
+（Q4.オブジェクトの現在の移動速度を取得・上書きするために使用されている Rigidbody のメンバはどれですか？）
+
+Q5.Which method is automatically called when the object collides with another collider?<input size=2 ans="dffdacec74fcd3acc3a46017e4a42d5c646e520a05a1867e8757fc21bc093d6b" placeholder=5></input>
+（Q5.このオブジェクトが他のオブジェクトと衝突したときに、自動的に呼び出されるメソッドはどれですか？）
+
+Q6.Which public variable defines the minimum bounce strength below which the object completely stops?<input size=2 ans="546e4d6ec71c99a6cfed52b065af3fbebf704d77bcc2810d3c4b97681499b263" placeholder=6></input>
+（Q6.この値を下回るとオブジェクトが完全に停止する、最小の跳ね返り強さを定義している public 変数はどれですか？）
+
+Q7.Which Vector3 constant is used to instantly stop all movement when the object stops bouncing?<input size=2 ans="69e3f554744bd4088a1a83d3485b03ca38b653bd0edfe081431559110ab20a3e" placeholder=7></input>
+（Q7.跳ね返りを停止させる際に、すべての移動を即座に止めるために使われている Vector3 定数はどれですか？）
+
+
+
+</div>
+<div class="fr"><img src="" width="500">
+   <video width="100%" controls>
+  <source src="image/Collision_reaction.mp4" type="video/mp4">
+</video>
+<p>
+This script makes a GameObject bounce upward every time it collides with another object.
+The bounce strength gradually decreases after each collision, and the object eventually stops moving.
+The object keeps its horizontal movement while bouncing, creating a realistic sliding and bouncing motion.
+Once the bounce strength becomes smaller than a specified threshold, physics simulation is disabled.
+
+このスクリプトは、オブジェクトが他のオブジェクトと衝突するたびに上方向へ跳ね返る動きを実現します。
+跳ね返りの強さは衝突ごとに少しずつ弱くなり、最終的には完全に停止します。
+跳ね返っている間も横方向の動きは維持され、転がりながら跳ねるような動作になります。
+跳ね返りの強さが指定されたしきい値より小さくなると、物理演算が無効化されて完全に停止します。
+<p>
+</div>
+</pre>
+<h2 id="answer">Answer</h2>
+<a class="btn" href="javascript:newScoring()">Answer</a>
+<script type="text/javascript">
+$(function(){
+ prettyPrint();
+});
+</script>

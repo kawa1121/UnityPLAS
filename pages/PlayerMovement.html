@@ -1,0 +1,94 @@
+<h2 id="statement">1</h2>
+<pre class="prettyprint" id="scoring-res">
+<div class="fl">using UnityEngine;
+<span style="color:#999;">// Unity features can be used（Unity の機能を使えるようにする）</span>
+
+public class PlayerMovement : MonoBehaviour
+<span style="color:#999;">// Allows this script to be attached to a GameObject（GameObject にアタッチ可能にする）</span>
+{
+    public float speed = 5f;
+
+    void Update()
+    {
+        <span style="color:#999;">// Called every frame by Unity（Unity が毎フレーム呼び出す）</span>
+
+        float h = Input.GetAxis("Horizontal");
+        <span style="color:#999;">// Gets player input（プレイヤー入力を取得）</span>
+
+        float v = Input.GetAxis("Vertical");
+        <span style="color:#999;">// Gets player input（プレイヤー入力を取得）</span>
+
+        Vector3 direction = new Vector3(h, 0, v);
+        <span style="color:#999;">// 3D direction or position（3D の方向・位置）</span>
+
+        transform.Translate(
+            direction * speed * Time.deltaTime,
+            Space.World
+        );
+        <span style="color:#999;">
+       // Moves the GameObject（GameObject を移動させる）
+       // Frame-rate independent timing（フレームレートに依存しない時間）
+       // Uses world coordinates（ワールド座標を使用）</span>
+    }
+}
+
+
+
+
+
+
+Q1. Which access modifier makes a variable or method available from anywhere?<input size=2 ans="60a42cb923e3ee0290350c5ad457be7e285b6e486f8a14a4bb95fa6be3e69a6a" placeholder=1></input>
+（Q1. 変数やメソッドをどこからでも使えるようにするアクセス修飾子はどれですか？）
+
+Q2. Which base class lets a script be attached to a GameObject in Unity?<input size=2 ans="d92e1c1c6c88494985dba428dd1d31c61b675008190404c926ab9e47ca3af9aa" placeholder=2></input>
+（Q2. スクリプトを Unity の GameObject にくっつけられるようにする基底クラスはどれですか？）
+
+Q3. Which data type is used when we want to store decimal numbers?<input size=2 ans="ae28946c64dd8813a93d500c51678a67654fcd8814f7cb86560c90768fd80c80" placeholder=3></input>
+（Q3.小数の数を保存するときに使うデータ型はどれですか？）
+
+Q4. Which class do we use to get input from the player (keyboard, controller, etc.)?<input size=2 ans="e68bc56e63eaefaae3e631bf139ce225cc46d9a688ddddd32bc7e3532953ce7b" placeholder=4></input>
+（Q4.キーボードやコントローラーなど、プレイヤーの入力を受け取るときに使うクラスはどれですか？）
+
+Q5. Which keyword is used to read the player’s left-right movement input?_5_
+（Q5. プレイヤーの左右の動きの入力を読み取るときに使うキーワードはどれですか？）
+
+Q6. Which class represents a point or direction in 3D space?<input size=2 ans="836163e46be739b5003a238988a53893042d97f1137ef42ab5388f3a8a6919c4" placeholder=6></input>
+（Q6. 3D 空間の位置や向きを表すときに使うクラスはどれですか？）
+
+Q7. Which property gives us access to the GameObject’s position, rotation, and scale?<input size=2 ans="566ae798dc28339efc7697abffd9e7dfc381bbd5471a0e76bb944a9152729835" placeholder=7></input>
+（Q7. ゲームオブジェクトの位置・回転・大きさにアクセスできるプロパティはどれですか？）
+
+
+Q8. Which method is used to move the GameObject in the scene?<input size=2 ans="554a708bb2a3106721f2859a30acb71838c8be3aa42c10f17bea73fa9da6bf68" placeholder=8></input>
+（Q8. ゲームオブジェクトをシーン内で動かすときに使うメソッドはどれですか？）
+
+Q9. Which class provides time-related values, such as deltaTime?<input size=2 ans="f14f6474626827b3733b647a3ca0fa90bc84e5cd0a162fc209c56bfb255765d8" placeholder=9></input>
+（Q9. deltaTime などの時間に関係する値を提供するクラスはどれですか？）
+
+Q10. Which keyword makes movement smooth even if the frame rate changes?<input size=2 ans="3f8e620fe28541834116754f56e402c886ac95edda80b225071efbe7ef9a849a" placeholder=10></input>
+（Q10. フレームレートが変わっても動きをなめらかにするために使うキーワードはどれですか？）
+
+Q11. Which constant tells Unity to move the object in world space instead of local space?<input size=2 ans="f4516f6999ce835d66c7e3d008038e9d2bbbdab392408d4781ad932acad4a712" placeholder=11></input>
+（Q11. オブジェクトを ローカル座標 ではなく ワールド座標 で動かすための定数はどれですか？）
+
+
+</div>
+<div class="fr"><img src="" width="500">
+     <video width="100%" controls>
+  <source src="image/PlayerMovement.mp4" type="video/mp4">
+</video>
+<p>
+This script allows the player to move a GameObject using keyboard or controller input.
+The object moves left, right, forward, and backward smoothly, regardless of frame rate.
+Movement is calculated in 3D space and applied in world coordinates.
+このスクリプトは、キーボードやコントローラーの入力を使ってオブジェクトを前後・左右に動かすことができます。
+フレームレートが変わっても、滑らかに移動するように作られている他、移動は 3D 空間で計算され、ワールド座標で適用されます。</p>
+</div>
+</pre>
+<h2 id="answer">Answer</h2>
+<a class="btn" href="javascript:newScoring()">Answer</a>
+<script type="text/javascript">
+$(function(){
+ prettyPrint();
+});
+</script>
