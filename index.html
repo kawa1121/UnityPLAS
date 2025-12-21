@@ -115,7 +115,27 @@ setTimeout(function(){
             }
             if(line.startsWith("#video:")){
                 var videoPath = line.replace("#video:", "");
-                $fr.append('<video src="' + videoPath + '" width="400" controls></video><br><br>');
+                if(line.startsWith("#video:")){
+    var videoPath = line.replace("#video:", "").trim();
+
+    var video = document.createElement("video");
+    video.width = 400;
+    video.controls = true;
+    video.preload = "metadata";   
+    video.muted = true;           
+    video.playsInline = true;     
+
+    var source = document.createElement("source");
+    source.src = videoPath;
+    source.type = "video/mp4";    
+
+    video.appendChild(source);
+    video.load();                 
+
+    $fr.append(video);
+    $fr.append("<br><br>");
+}
+
             }
         });
     }
@@ -126,3 +146,4 @@ setTimeout(function(){
 
 </body>
 </html>
+
