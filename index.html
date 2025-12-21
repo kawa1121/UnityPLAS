@@ -119,7 +119,8 @@ setTimeout(function(){
     var videoPath = line.replace("#video:", "").trim();
 
     var video = document.createElement("video");
-    video.width = 400;
+    video.style.width = "400px";
+	video.style.maxWidth = "100%";
     video.controls = true;
     video.preload = "metadata";   
     video.muted = true;           
@@ -146,4 +147,5 @@ setTimeout(function(){
 
 </body>
 </html>
+
 
