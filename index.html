@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8" >
@@ -58,12 +58,6 @@ code{
     width: 48%;
 }
 
-.fr video {
-    width: 400px !important;
-    max-width: 100% !important;
-    height: auto !important;
-}
-
 
 </style>
 
@@ -121,28 +115,7 @@ setTimeout(function(){
             }
             if(line.startsWith("#video:")){
                 var videoPath = line.replace("#video:", "");
-                if(line.startsWith("#video:")){
-    var videoPath = line.replace("#video:", "").trim();
-
-    var video = document.createElement("video");
-    video.style.width = "400px";
-	video.style.maxWidth = "100%";
-    video.controls = true;
-    video.preload = "metadata";   
-    video.muted = true;           
-    video.playsInline = true;     
-
-    var source = document.createElement("source");
-    source.src = videoPath;
-    source.type = "video/mp4";    
-
-    video.appendChild(source);
-    video.load();                 
-
-    $fr.append(video);
-    $fr.append("<br><br>");
-}
-
+                $fr.append('<video src="' + videoPath + '" width="400" controls></video><br><br>');
             }
         });
     }
@@ -153,6 +126,7 @@ setTimeout(function(){
 
 </body>
 </html>
+
 
 
 
