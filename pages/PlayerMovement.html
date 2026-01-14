@@ -2,26 +2,25 @@
 <div class="fl">
 <pre class="prettyprint" id="scoring-res">
 using UnityEngine;
-
-// Unity features can be used（Unity の機能を使えるようにする）
+<span style="color:#999;">// Unity features can be used（Unity の機能を使えるようにする）</span>
 public class PlayerMovement : MonoBehaviour
-// Allows this script to be attached to a GameObject（GameObject にアタッチ可能にする）
+<span style="color:#999;">// Allows this script to be attached to a GameObject（GameObject にアタッチ可能にする）</span>
 {
     public float speed = 5f;
 
     void Update()
     {
-        // Called every frame by Unity（Unity が毎フレーム呼び出す）
-        float h = Input.GetAxis("Horizontal"); // Gets player input（プレイヤー入力を取得）
-        float v = Input.GetAxis("Vertical");   // Gets player input（プレイヤー入力を取得）
+       <span style="color:#999;"> // Called every frame by Unity（Unity が毎フレーム呼び出す）</span>
+        float h = Input.GetAxis("Horizontal"); <span style="color:#999;">// Gets player input（プレイヤー入力を取得）</span>
+        float v = Input.GetAxis("Vertical");   <span style="color:#999;">// Gets player input（プレイヤー入力を取得）</span>
 
-        // 3D direction or position（3D の方向・位置）
+        <span style="color:#999;">// 3D direction or position（3D の方向・位置）</span>
         Vector3 direction = new Vector3(h, 0, v);
 
         transform.Translate(direction * speed * Time.deltaTime, Space.World);
-        // Moves the GameObject（GameObject を移動させる）
-        // Frame-rate independent timing（フレームレートに依存しない時間）
-        // Uses world coordinates（ワールド座標を使用）
+        <span style="color:#999;">// Moves the GameObject（GameObject を移動させる）</span>
+        <span style="color:#999;">// Frame-rate independent timing（フレームレートに依存しない時間）</span>
+        <span style="color:#999;">// Uses world coordinates（ワールド座標を使用）</span>
     }
 }
 
