@@ -1,24 +1,48 @@
 <h2 id="statement">10</h2>
 <pre class="prettyprint" id="scoring-res">
-<div class="fl">using UnityEngine;
+<div class="fl">
+using UnityEngine;
 
 public class CameraRotation : MonoBehaviour
 {
-    public float sensitivity = 200f;
-    private float xRotation = 0f;
+    public float sensitivity = 800f;
+    <span style="color:#999;">// Mouse rotation sensitivity（マウス感度）</span>
+
+    float xRotation;
+    <span style="color:#999;">// Current vertical rotation angle（上下回転角）</span>
+
+    void Start()
+    {
+        <span style="color:#999;">// Runs once before Update（最初に一度だけ実行）</span>
+
+        xRotation = transform.localEulerAngles.x;
+        <span style="color:#999;">// Gets initial camera rotation（初期回転角を取得）</span>
+
+        if (xRotation > 180f)
+            xRotation -= 360f;
+        <span style="color:#999;">// Converts angle range to -180 to 180（角度範囲を変換）</span>
+    }
 
     void Update()
     {
         float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+        <span style="color:#999;">// Horizontal mouse input（左右入力）</span>
+
         float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+        <span style="color:#999;">// Vertical mouse input（上下入力）</span>
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -70f, 70f);
+        <span style="color:#999;">// Limits vertical rotation（上下回転を制限）</span>
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+        <span style="color:#999;">// Applies vertical rotation to camera（上下回転を反映）</span>
+
         transform.parent.Rotate(Vector3.up * mouseX);
+        <span style="color:#999;">// Rotates parent for horizontal movement（左右回転は親で処理）</span>
     }
 }
+
 
 Q1. Which variable changes how sensitive the camera rotation is to mouse movement?<input size=2 ans="5cf18dfc6bbfd4a29ec6c4eabc44b8a55e84fc3f2c02888d66db9cdd18084988" placeholder=1></input>
 （Q1. マウスの動きがどれくらいカメラの回転に反映されるか（感度）を決めている変数はどれですか？）
