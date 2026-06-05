@@ -7,20 +7,19 @@
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width">
 
-	<title>Online UnityPLAS</title>
+	<title>Offline UnityPLAS</title>
 
 	<link rel="stylesheet" href="css/skyblue.css">
-
 	<link rel="stylesheet" href="demo/css/docs.css">
 	<link rel="stylesheet" href="demo/google-code-prettify/prettify.css">
-  <link rel="stylesheet" href="jquery-ui-1.11.4.custom/jquery-ui.css">
+	<link rel="stylesheet" href="jquery-ui-1.11.4.custom/jquery-ui.css">
 
 	<script src="jquery.js"></script>
 	<script src="jplas2015.js"></script>
 	<script type="text/javascript">
 	baseTxt = location.href.split("?")[1];
 	$(function(){
-		 init();
+		init();
 	});
 	</script>
 
@@ -28,73 +27,170 @@
 		<script type="text/javascript" src="demo/ie/htmlshiv.js"></script>
 		<script type="text/javascript" src="demo/ie/respond.src.js"></script>
 	<![endif]-->
-<script src="sha256.js" type="text/javascript"></script>
-<script type="text/javascript" src="scoring.js"></script>
-<script type="text/javascript" src="storage.js"></script>
-<script type="text/javascript" src="distinction.js"></script>
-<script src="javascript/index.js" type="text/javascript" charset="utf-8" ></script>
-<style>
-h2#statement:before{
-	content:"Problem #";
-}
-code.fillinblank input{
-	width:40px;
-}
-code{
-	-moz-tab-size: 4 ;
-	-o-tab-size: 4 ;
-	tab-size: 4	 ;
-}
+	<script src="sha256.js" type="text/javascript"></script>
+	<script type="text/javascript" src="scoring.js"></script>
+	<script type="text/javascript" src="storage.js"></script>
+	<script type="text/javascript" src="distinction.js"></script>
+	<script src="javascript/index.js" type="text/javascript" charset="utf-8"></script>
 
-.jplas {
-    width: 100%;
-    padding: 20px;
-}
+	<style>
+	h2#statement:before {
+		content: "Problem #";
+	}
+	code.fillinblank input,
+	#answer-area input {
+		width: 200px !important;
+	}
+	code {
+		-moz-tab-size: 4;
+		-o-tab-size: 4;
+		tab-size: 4;
+	}
 
-.fl {
-    width: 50%;
-}
-.fr {
-    width: 48%;
-}
+	body {
+		padding-bottom: 200px;
+	}
 
+	.jplas {
+		width: 100%;
+		padding: 20px;
+	}
 
-</style>
+	.fl {
+		width: 49%;
+	}
 
+	.fr {
+		width: 49%;
+		min-height: 90vh;
+	}
 
+	/* 参考動画ラベル */
+	.fr strong {
+		font-size: 18px;
+		color: #000;
+	}
 
+	/* 灰色の枠を非表示 */
+	pre#scoring-res {
+		border: none;
+		background: none;
+		padding: 0;
+		margin-bottom: 24px;
+		overflow: visible;
+		height: auto;
+		border-radius: 0;
+		box-shadow: none;
+	}
+
+	/* 解答画面のみ適用 */
+	#problem-area {
+		overflow-y: auto;
+		box-sizing: border-box;
+		border: 1px solid #b0c4de;
+		border-radius: 6px;
+		background: #f8fbff;
+		padding: 0;
+		min-height: 60vh;
+	}
+
+	#problem-area h4.area-label {
+		margin: 0;
+		font-size: 12px;
+		color: #5577aa;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		border-bottom: 1px solid #cde;
+		padding: 6px 16px;
+		position: sticky;
+		top: 0;
+		background: #f8fbff;
+		z-index: 1;
+	}
+
+	#problem-area .area-content {
+		padding: 12px 16px;
+		overflow-x: auto;
+	}
+
+	#answer-area {
+		overflow-y: auto;
+		box-sizing: border-box;
+		border: 1px solid #b0d4b0;
+		border-radius: 6px;
+		background: #f8fff8;
+		padding: 0;
+		min-height: 220px;
+	}
+
+	#answer-area h4.area-label {
+		margin: 0;
+		font-size: 12px;
+		color: #447744;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		border-bottom: 1px solid #bdb;
+		padding: 6px 16px;
+		position: sticky;
+		top: 0;
+		background: #f8fff8;
+		z-index: 1;
+	}
+
+	#answer-area .area-content {
+		padding: 12px 16px;
+		overflow-x: auto;
+	}
+
+	/* ヒントボタンとテキスト */
+	.hint-btn {
+		font-size: 11px;
+		padding: 2px 8px;
+		margin-left: 8px;
+		cursor: pointer;
+		vertical-align: middle;
+	}
+
+	.hint-text {
+		display: none;
+		margin-top: 4px;
+		padding: 4px 8px;
+		background: #fffbe6;
+		border-left: 3px solid #f0c040;
+		font-size: 13px;
+		color: #333;
+	}
+	</style>
 </head>
 <body>
 
 <div class="bg-dark padding-y-20">
 	<div class="container text-center">
 		<h1>Online UnityPLAS</h1>
-
 		<a class="btn btn-success" onClick="toTop()">TOP</a>
 		<a class="btn btn-info" onclick="window.open('about:blank','_self').close()">End</a>
-		<!-- <div class="jplas" src="login/whoami.jsp"></div> -->
-	</div>
-	</div>
-
-<div class="container">
-	<div class="row">
-		<!-- <div class="col md-3">
-			<div class="sidemenu js-sidemenu">
-				<h5>Sidemenu</h5>
-				<div>
-					<a href="#problems">Problems</a>
-					<a href="#submission">Submission</a>
-					<a href="#end">End</a>
-
-				</div>
-			</div>
-		</div> -->
-		<div class="col md-9 float-right jplas">
-
 	</div>
 </div>
 
+<div class="container">
+    <div class="row">
+        <div class="col md-9 float-right jplas">
+        </div>
+    </div>
+</div>
 
+<!-- iframeはjplasの外に配置 -->
+<div class="container" style="margin-top:20px;">
+    <h2>チュートリアル</h2>
+    <p>以下のコンテンツで操作方法を確認してください。</p>
+    <iframe 
+        src="Build/index.html"
+        width="960" 
+        height="540"
+        style="border:2px solid black; display:block; margin:0 auto;"
+        allow="autoplay; fullscreen; xr-spatial-tracking">
+    </iframe>
+</div>
 
 <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
 <script src="demo/js/jquery.sticky-kit.min.js"></script>
@@ -102,35 +198,134 @@ code{
 <script src="demo/js/docs.js"></script>
 
 <script>
-// 右枠に画像・動画を追加する処理
-setTimeout(function(){
-    var $fr = $('.jplas .fr');  // 右枠を取得
-    if($fr.length){
-        $fr.append('<h3></h3>');  // タイトル追加
-        baseTxt.split("\n").forEach(function(line){
-            line = line.trim();
-            if(line.startsWith("#img:")){
-                var imgPath = line.replace("#img:", "");
-                $fr.append('<img src="' + imgPath + '" width="400" alt="画像"><br><br>');
-            }
-            if(line.startsWith("#video:")){
-                var videoPath = line.replace("#video:", "");
-                $fr.append('<video src="' + videoPath + '" width="400" controls></video><br><br>');
-            }
-        });
-    }
-}, 500); // 0.5秒待機して右枠が生成されるのを待つ
+// ── 問題文・解答欄の分割処理（解答画面のみ） ──────────────────
+setTimeout(function () {
+	var $fl = $('.jplas .fl');
+	var $fr = $('.jplas .fr');
 
+	if ($fl.length === 0 || $fr.length === 0) return;
+
+	$('pre#scoring-res').css({
+		border: 'none',
+		background: 'none',
+		padding: '0',
+		overflow: 'visible',
+		height: 'auto',
+		marginBottom: '24px',
+		boxShadow: 'none'
+	});
+
+	var html = $fl.html();
+
+	var splitIndex = html.indexOf('<input');
+	if (splitIndex === -1) return;
+
+	var codeHtml   = html.substring(0, splitIndex);
+	var answerHtml = html.substring(splitIndex);
+
+	var qIndex = codeHtml.search(/Q\d+\./);
+	if (qIndex !== -1) {
+		answerHtml = codeHtml.substring(qIndex) + answerHtml;
+		codeHtml   = codeHtml.substring(0, qIndex);
+	}
+
+	// 「<input ...>（日本語文）」→「（日本語文）<br><input ...> ヒントボタン」
+	// hint属性があればその値をボタン下に表示、なければボタン自体を出さない
+	answerHtml = answerHtml.replace(
+		/(<input[^>]*>)([\s\S]*?)(（[\s\S]*?）)/g,
+		function (match, input, between, jp) {
+			var hintMatch = input.match(/hint="([^"]*)"/);
+			var hintText  = hintMatch ? hintMatch[1] : null;
+
+			var btnHtml = hintText
+				? '<button class="hint-btn">Show the hint</button>' +
+				  '<div class="hint-text">' + hintText + '</div>'
+				: '';
+
+			return between + jp + '<br>' + input + btnHtml;
+		}
+	);
+
+	var $codeArea = $(
+		'<div id="problem-area">' +
+			'<h4 class="area-label">コード</h4>' +
+			'<div class="area-content">' + codeHtml + '</div>' +
+		'</div>'
+	);
+	var $answerArea = $(
+		'<div id="answer-area">' +
+			'<h4 class="area-label">設問・解答欄</h4>' +
+			'<div class="area-content">' + answerHtml + '</div>' +
+		'</div>'
+	);
+
+	$fl.css({
+		display: 'flex',
+		flexDirection: 'column',
+		minHeight: '90vh',
+		gap: '8px',
+		overflow: 'visible'
+	});
+
+	$codeArea.css('flex', '6');
+	$answerArea.css('flex', '4');
+
+	$fl.empty().append($codeArea).append($answerArea);
+
+	// ヒントボタンのクリックイベント
+	$(document).on('click', '.hint-btn', function () {
+		var $hint = $(this).next('.hint-text');
+		if ($hint.is(':visible')) {
+			$hint.hide();
+			$(this).text('Show the hint');
+		} else {
+			$hint.show();
+			$(this).text('Close the hint');
+		}
+	});
+
+}, 500);
+
+// ── Answerボタンの体裁を整える ────────────────────────────
+setTimeout(function () {
+	var $h2  = $('h2#answer');
+	var $btn = $('a.btn[href="javascript:newScoring()"]');
+	var $fl  = $('.jplas .fl');
+	if ($h2.length && $btn.length && $fl.length) {
+		var $wrapper = $('<div style="display:flex; flex-direction:column; align-items:center; margin-top:16px; width:50%;"></div>');
+		$fl.append($wrapper);
+		$wrapper.append($h2).append($btn);
+		$btn.css({ display: 'block', width: 'fit-content', margin: '8px 0 0 0' });
+	}
+}, 600);
+
+// ── 右枠の video の前に「参考動画」ラベルを挿入 ──────────────
+setTimeout(function () {
+	$('.jplas .fr video').each(function () {
+		$(this).before('<p><strong>Sample Video （参考動画）</strong></p>');
+	});
+}, 600);
+
+// ── 右枠に画像・動画を追加する処理 ──────────────────────────
+setTimeout(function () {
+	var $fr = $('.jplas .fr');
+	if ($fr.length) {
+		$fr.append('<h3></h3>');
+		baseTxt.split("\n").forEach(function (line) {
+			line = line.trim();
+			if (line.startsWith("#img:")) {
+				var imgPath = line.replace("#img:", "");
+				$fr.append('<img src="' + imgPath + '" width="400" alt="画像"><br><br>');
+			}
+			if (line.startsWith("#video:")) {
+				var videoPath = line.replace("#video:", "");
+				$fr.append('<p><strong>参考動画</strong></p>');
+				$fr.append('<video src="' + videoPath + '" width="400" controls></video><br><br>');
+			}
+		});
+	}
+}, 500);
 </script>
-
 
 </body>
 </html>
-
-
-
-
-
-
-
-
